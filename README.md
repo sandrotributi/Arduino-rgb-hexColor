@@ -1,6 +1,5 @@
 # Arduino-rgb-hexColor
 
-Accende un led RGB in accordo con una stringa esadecimale
-letta dalla porta seriale.
+Turns on an RGB led in accordance with a hexadecimal string read from the serial port.
 
-Formato della stringa esadecimale: #RRGGBB
+Hexadecimal string format: #RRGGBB
