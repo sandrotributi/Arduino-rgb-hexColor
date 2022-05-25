@@ -4,7 +4,6 @@
  * Formato della stringa esadecimale: #RRGGBB 
  * 
  * @author     Sandro Tributi <tributi.sandro@curiepergine.it>
- * @copyright  CC BY
  */
 
 // Pin led RGB
