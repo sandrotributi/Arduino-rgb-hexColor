@@ -1,45 +1,52 @@
  /**
- * Accende un led RGB in accordo con una stringa esadecimale
- * letta dalla porta seriale.
- * Formato della stringa esadecimale: #RRGGBB 
+ * Turns on an RGB led in accordance with a hexadecimal string
+ * read from the serial port.
+ * The colors may be define using the hexadecimal representation 
+ * preceded by a # sign.
+ * The hexadecimal string format is #rrggbb where rr is the RED value, 
+ * gg is the GREEN value and bb is the BLUE value.
  * 
- * @author     Sandro Tributi <tributi.sandro@curiepergine.it>
+ * This code is in the public domain. 
+ * 
+ * by Sandro Tributi <sandro.tributi@gmail.com>
+ *
+ * https://github.com/sandrotributi/Arduino-rgb-hexColor/edit/main/rgb_hexColor.ino
  */
 
-// Pin led RGB
+// led RGB pins
 #define pinRed 11
 #define pinGreen 10
 #define pinBlue 9
 
-// Variabili
-String hexStr; // stringa letta dalla porta seriale
-byte r, g, b;  // valori decimali RGB (0-255)
+// Variables
+String hexStr; 
+byte r, g, b;  
 
 void setup() {
-  // inizializzazione porta seriale
+  // serial port initialization
   Serial.begin(9600);
-  // inizializzazione pin dove è collegato il led RGB
+  // pin initialization where the RGB led is connected
   pinMode(pinRed, OUTPUT);
   pinMode(pinGreen, OUTPUT);
   pinMode(pinBlue, OUTPUT);  
 }
 
 void loop() {
-  // se ci sono byte da leggere sulla seriale...
+  // if there are bytes to read on the serial ...
   if (Serial.available() > 0) {
     // lettura della stringa
     hexStr = Serial.readStringUntil('\n');
-    hexStr.trim();        // elimina spazi
-    hexStr.toUpperCase(); // converte in maiuscolo
-    // se il primo carattere della stringa è '#'...
+    hexStr.trim();        // delete any spaces
+    hexStr.toUpperCase(); // converts to uppercase
+    // if the first character of the string is '#'...
     if (hexStr.charAt(0) == '#') {
-      // conversione hex --> dec
+      // conversion from hex to decimal
       r = hex2dec(hexStr.substring(1,3));
       g = hex2dec(hexStr.substring(3,5));
       b = hex2dec(hexStr.substring(5,7));
-      // accende il led RGB
+      // turns on the RGB led
       setColor(pinRed, pinGreen, pinBlue, r, g, b);
-      // stampa valori sul monitor seriale
+      // print decimal values on the serial monitor
       Serial.print(r);
       Serial.print(",");
       Serial.print(g);
