@@ -56,6 +56,15 @@ void loop() {
   }
 }
 
+/*
+ * hex2dec
+ * Hex to decimal conversion
+ * 
+ * Parameter: hexDigit (String)
+ *            hexadecimal string (2 digit)
+ * Return value: byte 
+ *               decimal value (0-255)
+ */
 byte hex2dec(String hexDigit) {
   char hc;
   byte dd[2];
@@ -71,6 +80,18 @@ byte hex2dec(String hexDigit) {
   return dd[0] * 16 + dd[1];
 }
 
+/*
+ * setColor
+ * Turns on the RGB led of a specified color
+ *
+ * Parameters: pinR (byte)  - RED component pin
+ *             pinG (byte)  - GREEN component pin
+ *             pinB (byte)  - BLUE component pin
+ *             red (byte)   - RED decimal value
+ *             green (byte) - GREEN decimal value
+ *             blue (byte)  - BLUE decimal value
+ * Return value: none
+ */
 void setColor(byte pinR, byte pinG, byte pinB, byte red, byte green, byte blue) {
   analogWrite(pinR, red);
   analogWrite(pinG, green);
