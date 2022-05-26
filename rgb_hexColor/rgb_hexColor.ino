@@ -72,7 +72,7 @@ byte hex2dec(String hexDigit) {
   for (int i = 0; i < hexDigit.length(); i++) {    
     hc = hexDigit.charAt(i);
     if (hc >= '0' && hc <= '9') {
-      dd[i] = hexDigit.charAt(i) - 48;
+      dd[i] = hexDigit.charAt(i) - '0';
     } else {
       dd[i] = hexDigit.charAt(i) - 55;
     }
