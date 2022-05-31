@@ -98,6 +98,12 @@ void setColor(byte pinR, byte pinG, byte pinB, byte red, byte green, byte blue) 
   analogWrite(pinB, blue);
 }
 
+/*
+ * error
+ * Displays an error message on the serial monitor
+ * 
+ * Return value: none
+ */
 void error() {
-  
+  Serial.println(">SYNTAX ERROR<"); 
 }
